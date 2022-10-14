@@ -40,7 +40,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   showModalBottomSheet(
                       context: context,
                       builder: (BuildContext context) {
-                        return SizedBox();
+                        return SizedBox(
+                          height: 300,
+                        );
                       });
                 },
               ),
