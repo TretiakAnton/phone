@@ -9,7 +9,6 @@ class Country {
     name = json['name'];
     callingCodes =
         json['callingCodes'] != null ? json['callingCodes'].cast<String>() : [];
-
     flag = json['flag'];
   }
 
