@@ -8,7 +8,7 @@ import '../models/country.dart';
 class CountryBloc extends Bloc<CountryEvent, CountryState> {
   Repo repo = Repo();
 
-  CountryBloc(super.initialState);
+  CountryBloc() : super(CountryStartAppState());
 
   @override
   Stream<CountryState> mapEventToState(CountryEvent event) async* {
@@ -18,7 +18,10 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
       yield CountryLoadedState(countries: countries);
     } else if (event is CountryChooseEvent) {
       yield CountryChosenState(
-          country: Country(name: 'name', callingCodes: [], flag: 'flag'));
+          country: Country(
+              name: event.country.name,
+              callingCodes: event.country.callingCodes,
+              flag: event.country.flag));
     }
   }
 }
