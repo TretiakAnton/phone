@@ -1,9 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phone/bloc/country_event.dart';
 import 'package:phone/bloc/country_state.dart';
+import 'package:phone/models/country.dart';
 import 'package:phone/repository.dart';
-
-import '../models/country.dart';
 
 class CountryBloc extends Bloc<CountryEvent, CountryState> {
   Repo repo = Repo();
@@ -18,10 +17,11 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
       yield CountryLoadedState(countries: countries);
     } else if (event is CountryChooseEvent) {
       yield CountryChosenState(
-          country: Country(
-              name: event.country.name,
-              callingCodes: event.country.callingCodes,
-              flag: event.country.flag));
+        country: Country(
+            name: event.country.name,
+            callingCodes: event.country.callingCodes,
+            flag: event.country.flag),
+      );
     }
   }
 }
