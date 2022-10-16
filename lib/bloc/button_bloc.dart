@@ -7,6 +7,14 @@ class ButtonBloc extends Bloc<ButtonEvent, ButtonState> {
 
   @override
   Stream<ButtonState> mapEventToState(ButtonEvent event) async* {
-    if (event is ButtonChangesEvent) {}
+    if (event is ButtonChangesEvent) {
+      bool isEnabledButton;
+      if (event.number.length == 10) {
+        isEnabledButton = true;
+      } else {
+        isEnabledButton = false;
+      }
+      yield ButtonChangeState(isEnabled: isEnabledButton);
+    }
   }
 }
